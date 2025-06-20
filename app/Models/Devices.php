@@ -21,4 +21,9 @@ class Devices extends Model
     public function notifications(){
         return $this->hasMany(Notifications::class);
     }
+
+    public function latestStatusLog()
+    {
+        return $this->hasOne(DevicesStatusLogs::class, 'device_id')->latest('checked_at');
+    }
 }
